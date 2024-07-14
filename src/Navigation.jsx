@@ -1,17 +1,22 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { HomePage } from './HomePage.jsx';
-import { LogIn } from './LogIn.jsx'
-import { NotFoundPage } from './NotFoundPage.jsx';
+import { HomePage } from './pages/HomePage.jsx';
+import { LogIn } from './pages/LogIn.jsx'
+import { SignIn } from './pages/SignIn.jsx';
+import { NotFoundPage } from './pages/NotFoundPage.jsx';
 
 const router = createBrowserRouter([
   {
   path: '/',
   element: <HomePage/>,
-  errorElement: <NotFoundPage/>
+  errorElement: <NotFoundPage/> 
   },
   {
   path: '/LogIn',
   element: <LogIn/>,
+  },
+  {
+  path: '/SignIn',
+  element: <SignIn/>,
   },
 ]);
 
