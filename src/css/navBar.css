@@ -1,0 +1,64 @@
+.navBar {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    height: 8vh;
+    width: 100%;
+    background-color: var(--black-color);
+    color: #282c34;
+    font-size: 1.2rem;
+    font-family: Arial;   
+    
+}
+
+.navAnchor {
+    text-decoration: none;
+    color: white;
+    display: flex;
+    margin-left: 2%;
+}
+
+.authMenu {
+  display: flex;
+  margin-right: 2%;
+  gap: 1em;
+}
+
+.navLogIn {
+text-decoration: none;
+color: var(--black-color);
+background-color: white;
+border: 1px solid black;
+border-radius: 8px;
+padding: 0.5em;
+opacity: 0.9;
+&:hover{
+    background-color: #79acc2;
+    color: var(--black-color);
+}
+}
+
+@keyframes blink{
+300%{
+    opacity: 0
+}
+60%{
+    opacity: .5;
+}
+}
+
+.navSignIn{
+text-decoration: none;
+color: var(--black-color);
+background-color: white;
+border: 1px solid black;
+border-radius: 8px;
+padding: 0.5em;
+animation: blink 4s linear infinite;
+&:hover{
+    animation: none;
+    background-color: #79acc2;
+    color: var(--black-color);
+}
+}
