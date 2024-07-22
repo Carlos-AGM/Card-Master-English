@@ -1,0 +1,18 @@
+:root {
+    --black-color: #282c34;
+    --grey-color: #56585e;
+    --blue-color: #79acc2
+  }
+
+  .mainContainer {
+    background-color: var(--blue-color);
+    display: flex;
+    position: absolute;
+    margin-top: 8vh;
+    flex: 1;
+    flex-direction: column; /* Para alinear el contenido verticalmente si es necesario */
+    margin-top: 8vh; /* Deja espacio para el NavBar */
+    width: 100%; /* Ocupa todo el ancho disponible */
+    height: calc(100vh - 8vh); /* Ocupa el resto del alto del viewport */
+}
+

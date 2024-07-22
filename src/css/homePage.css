@@ -1,5 +1,7 @@
 :root {
   --black-color: #282c34;
+  --grey-color: #56585e;
+  --blue-color: #79acc2
 }
 
 body {
@@ -20,7 +22,7 @@ body {
 .sideBarInfo{
   width: 20%;
   margin-top: 8vh;
-  background-color: #56585e;
+  background-color: var(--grey-color);
 }
 
 .mainContent{

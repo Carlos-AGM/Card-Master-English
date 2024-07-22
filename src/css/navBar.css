@@ -1,3 +1,8 @@
+:root {
+    --black-color: #282c34;
+    --grey-color: #56585e;
+    --blue-color: #79acc2
+  }
 .navBar {
     position: fixed;
     display: flex;
@@ -6,10 +11,9 @@
     height: 8vh;
     width: 100%;
     background-color: var(--black-color);
-    color: #282c34;
+    color: var(--black-color);
     font-size: 1.2rem;
-    font-family: Arial;   
-    
+    font-family: Arial;
 }
 
 .navAnchor {
@@ -34,7 +38,7 @@ border-radius: 8px;
 padding: 0.5em;
 opacity: 0.9;
 &:hover{
-    background-color: #79acc2;
+    background-color: var(--blue-color);
     color: var(--black-color);
 }
 }
@@ -58,7 +62,7 @@ padding: 0.5em;
 animation: blink 4s linear infinite;
 &:hover{
     animation: none;
-    background-color: #79acc2;
+    background-color: var(--blue-color);
     color: var(--black-color);
 }
 }
