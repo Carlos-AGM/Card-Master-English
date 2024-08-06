@@ -8,7 +8,7 @@ export function HomePage () {
     return (
         <div className={'app'}>
             <aside className='sideBarInfo'>
-                <p>hola</p>
+                <p>aqui van los decks prefabricados</p>
             </aside>
             <NavBar/>
             <main className='mainContent'>

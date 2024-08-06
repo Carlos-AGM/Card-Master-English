@@ -1,18 +1,60 @@
-:root {
-    --black-color: #282c34;
-    --grey-color: #56585e;
-    --blue-color: #79acc2
-  }
-
-  .mainContainer {
-    background-color: var(--blue-color);
-    display: flex;
-    position: absolute;
-    margin-top: 8vh;
-    flex: 1;
-    flex-direction: column; /* Para alinear el contenido verticalmente si es necesario */
-    margin-top: 8vh; /* Deja espacio para el NavBar */
-    width: 100%; /* Ocupa todo el ancho disponible */
-    height: calc(100vh - 8vh); /* Ocupa el resto del alto del viewport */
+.flashcardSection {
+  display: flex;
+  justify-content: center;
+  flex: 1;
+  background-color: var(--blue-color);
+  padding: 1em;
+  overflow-y: auto;
+  position: relative;
 }
 
+.flashcard{
+  height: 40%;
+  width: 60%;
+  background-color: var(--card-color);
+  border-radius: 1em;
+  align-self: center;
+  
+}
+
+.title{
+  display: flex;
+  justify-content: center;
+  background-color: var(--black-color);
+  border-bottom: 2px solid var(--gray-color);
+  font-family: 'Roboto';
+  font-weight: lighter;
+  border-top-left-radius: 1em;
+  border-top-right-radius: 1em;
+}
+
+h2{
+  font-weight: normal;
+  font-size: 1.4rem;
+  color: var(--card-color)
+}
+
+.flashcardTextArea{
+  display: flex;
+  margin: 0;
+  height: 26vh;
+  outline: none;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Roboto';
+  font-size:large;
+}
+
+.createdCards {
+  width: calc(100% - 29.7%);
+  height: 16%; 
+  background-color: var(--card-color); 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  bottom: 0;
+  position: fixed;
+  margin-bottom: 2vh;
+  border-radius: 1em;
+}

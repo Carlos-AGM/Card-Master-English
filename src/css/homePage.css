@@ -1,7 +1,8 @@
 :root {
   --black-color: #282c34;
-  --grey-color: #56585e;
-  --blue-color: #79acc2
+  --gray-color: #757880;
+  --blue-color: #79acc2;
+  --card-color: #dddddd;
 }
 
 body {
@@ -22,7 +23,9 @@ body {
 .sideBarInfo{
   width: 20%;
   margin-top: 8vh;
-  background-color: var(--grey-color);
+  background-color: var(--gray-color);
+  padding: 1em;
+  font-size: large;
 }
 
 .mainContent{
@@ -125,21 +128,25 @@ body {
   }
 }
 
-@media (max-width: 1440px) {
+@media (max-width: 1800px) {
   .imageTextQuestion,
   .imageTextAnswer,
   .imageTextButton {
-    font-size: 1rem;
+    font-size: 1.1rem;
     padding: 0 0.5em;
-    margin: 8px 0;
+    margin: 10px 0;
+    top: 12%
   }
+  
 
   .imageTextAnswer{
     left: 71.1%;
+    top: 22%;
   }
 
   .imageTextButton {
     width: 8%;
+    top: 29.7%;
     left: 76%;
     height: 2.5em; 
     min-height: 2.5em; 
