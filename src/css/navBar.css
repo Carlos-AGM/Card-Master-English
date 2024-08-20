@@ -2,7 +2,8 @@
     --black-color: #282c34;
     --grey-color: #56585e;
     --blue-color: #79acc2
-  }
+}
+
 .navBar {
     position: fixed;
     display: flex;
@@ -24,45 +25,47 @@
 }
 
 .authMenu {
-  display: flex;
-  margin-right: 2%;
-  gap: 1em;
+    display: flex;
+    margin-right: 2%;
+    gap: 1em;
 }
 
 .navLogIn {
-text-decoration: none;
-color: var(--black-color);
-background-color: white;
-border: 1px solid black;
-border-radius: 8px;
-padding: 0.5em;
-opacity: 0.9;
-&:hover{
-    background-color: var(--blue-color);
+    text-decoration: none;
     color: var(--black-color);
-}
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 8px;
+    padding: 0.5em;
+    opacity: 0.9;
+    transition: background .3s ease;
+    &:hover{
+        background-color: var(--blue-color);
+        color: var(--black-color);
+    }
 }
 
 @keyframes blink{
-300%{
-    opacity: 0
-}
-60%{
-    opacity: .5;
-}
+    300%{
+        opacity: 0
+    }
+    60%{
+        opacity: .5;
+    }
 }
 
 .navSignIn{
-text-decoration: none;
-color: var(--black-color);
-background-color: white;
-border: 1px solid black;
-border-radius: 8px;
-padding: 0.5em;
-animation: blink 4s linear infinite;
-&:hover{
-    animation: none;
-    background-color: var(--blue-color);
+    text-decoration: none;
     color: var(--black-color);
-}
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 8px;
+    padding: 0.5em;
+    transition: background .3s ease;
+    animation: blink 4s linear infinite;
+    &:hover{
+        animation: none;
+        background-color: var(--blue-color);
+        color: var(--black-color);
+    }
 }

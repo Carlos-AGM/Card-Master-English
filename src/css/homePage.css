@@ -24,6 +24,7 @@ body {
   width: 20%;
   margin-top: 8vh;
   background-color: var(--gray-color);
+  border-right: 2px solid var(--black-color);
   padding: 1em;
   font-size: large;
 }

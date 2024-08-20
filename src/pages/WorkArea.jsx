@@ -1,11 +1,13 @@
 import { NavBar } from '../components/NavBar';
 import { Flashcard } from '../components/Flashcard';
+import { AssistantIA } from '../components/AssistantIA';
 import { useState } from 'react';
 import '../css/workArea.css';
 
 export function WorkArea () {
     const [userAnswer, setUserAnswer] = useState('');
     const [showFlashcard, setShowFlashcard] = useState(false);
+    const [flashcardDecks, setFlashcardDecks] = useState({});
 
     const handleInputChange = (e) => {
         setUserAnswer(e.target.value);
@@ -22,7 +24,7 @@ export function WorkArea () {
             <NavBar/>
             <div className='mainContainer'>
                 <aside className='assistantIA'>
-                    <p> Aqui va la IA .</p>
+                    <AssistantIA/>
                 </aside>
                 {!showFlashcard && (
                     <div className='firstDeck'>
@@ -38,7 +40,7 @@ export function WorkArea () {
                         </form>
                     </div>
                 )}
-                {showFlashcard && <Flashcard />}
+                {showFlashcard && <Flashcard flashcardDecks={flashcardDecks} setFlashcardDecks={setFlashcardDecks} userAnswer={userAnswer} />}
             </div>
         </div>
     );
