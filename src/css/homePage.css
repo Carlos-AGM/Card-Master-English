@@ -36,7 +36,7 @@ body {
 }
 
 .homePageImage{
-  max-height: 100vh;
+  max-height: 98vh;
   width: 100%;
   display: block;
   margin: 0;
@@ -105,7 +105,7 @@ body {
 
 .imageTextAnswer {
   top: 23%;
-  left: 71%;
+  left: 69%;
   transform: translate(-51.5%, -50%);
 }
 
@@ -123,9 +123,21 @@ body {
   display: flex; 
   align-items: center; 
   justify-content: center;
+  transition: background .3s ease;
+  animation: blink 2.5s linear infinite;
   &:hover{
     background-color: var(--black-color);
-    color: white
+    animation: none;
+    color: white;
+  }
+}
+
+@keyframes blink{
+  100%{
+      opacity: 1
+  }
+  60%{
+      opacity: .6;
   }
 }
 
@@ -141,7 +153,7 @@ body {
   
 
   .imageTextAnswer{
-    left: 71.1%;
+    left: 70.6%;
     top: 22%;
   }
 

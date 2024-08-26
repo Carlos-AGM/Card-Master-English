@@ -1,6 +1,6 @@
 import { NavBar } from '../components/NavBar';
 import { Flashcard } from '../components/Flashcard';
-import { AssistantIA } from '../components/AssistantIA';
+// import { AssistantIA } from '../components/AssistantIA';
 import { useState } from 'react';
 import '../css/workArea.css';
 
@@ -24,7 +24,7 @@ export function WorkArea () {
             <NavBar/>
             <div className='mainContainer'>
                 <aside className='assistantIA'>
-                    <AssistantIA/>
+                    {/* <AssistantIA/> */}
                 </aside>
                 {!showFlashcard && (
                     <div className='firstDeck'>

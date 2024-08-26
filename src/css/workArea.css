@@ -19,12 +19,14 @@
   bottom: 20vh;
 }
 
-.assistantIA{
+.assistantIA {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-right: 2px solid var(--black-color);
   background-color: var(--gray-color);
   width: 25%;
   padding: 1em;
-  align-content: center;
 }
 
 .firstDeck{

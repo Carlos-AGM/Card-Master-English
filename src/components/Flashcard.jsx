@@ -4,7 +4,8 @@ import '../css/flashcard.css';
 
 export function Flashcard({ setFlashcardDecks, userAnswer }) {
     const [isFront, setIsFront] = useState(true);
-    const [cardText, setCardText] = useState('');
+    const [frontText, setFrontText] = useState('');
+    const [backText, setBackText] = useState('');
     const [currentCardIndex, setCurrentCardIndex] = useState(null);
     const cardTextRef = useRef(null);
 
@@ -23,7 +24,7 @@ export function Flashcard({ setFlashcardDecks, userAnswer }) {
         const element = cardTextRef.current;
         let text = element.innerText.replace(/\n/g, '');
 
-        text = text.replace(/^(.)(\s)/, '$1')
+        text = text.replace(/^(.)(\s)/, '$1');
 
         if (text.length > 304) {
             text = text.slice(0, 304);
@@ -31,7 +32,12 @@ export function Flashcard({ setFlashcardDecks, userAnswer }) {
 
         const formattedText = text.match(/.{1,56}/g)?.join('\n') || text;
         element.innerText = formattedText;
-        setCardText(text);
+
+        if (isFront) {
+            setFrontText(text);
+        } else {
+            setBackText(text);
+        }
 
         setTimeout(() => {
             const range = document.createRange();
@@ -51,20 +57,18 @@ export function Flashcard({ setFlashcardDecks, userAnswer }) {
             if (isFront) {
                 // Guardar en la parte 'front'
                 if (currentCardIndex === null) {
-                    // Crear nueva tarjeta si no existe
-                    updatedDeck.push({ front: cardText, back: '' });
+                    updatedDeck.push({ front: frontText, back: '' });
                     setCurrentCardIndex(updatedDeck.length - 1);
                 } else {
-                    // Actualizar tarjeta existente
-                    updatedDeck[currentCardIndex].front = cardText;
+                    updatedDeck[currentCardIndex].front = frontText;
                 }
-                console.log('Flashcard Front Saved:', cardText);
+                console.log('Flashcard Front Saved:', frontText);
             } else {
                 // Guardar en la parte 'back'
                 if (currentCardIndex !== null) {
-                    updatedDeck[currentCardIndex].back = cardText;
+                    updatedDeck[currentCardIndex].back = backText;
                 }
-                console.log('Flashcard Back Saved:', cardText);
+                console.log('Flashcard Back Saved:', backText);
             }
 
             console.log('Updated Deck:', { [userAnswer]: updatedDeck });
@@ -72,29 +76,34 @@ export function Flashcard({ setFlashcardDecks, userAnswer }) {
         });
 
         setIsFront(!isFront);
-        setCardText('');
-        if (cardTextRef.current) {
-            cardTextRef.current.innerText = '';
-        }
+        cardTextRef.current.innerText = isFront ? backText : frontText;
     };
 
     const handleSave = () => {
         setFlashcardDecks(prevDecks => {
             const deck = prevDecks[userAnswer] || [];
-            const newCard = isFront ? { front: cardText, back: '' } : { front: '', back: cardText };
 
-            setCurrentCardIndex(deck.length);
-            const updatedDeck = [...deck, newCard];
-            console.log('New Card Added:', newCard);
-            console.log('Updated Deck:', { [userAnswer]: updatedDeck });
-            return { ...prevDecks, [userAnswer]: updatedDeck };
+            if (currentCardIndex !== null) {
+                // Actualizar tarjeta existente
+                deck[currentCardIndex] = { front: frontText, back: backText };
+            } else {
+                // Crear nueva tarjeta
+                const newCard = { front: frontText, back: backText };
+                deck.push(newCard);
+                setCurrentCardIndex(deck.length - 1);
+                console.log('New Card Added:', newCard);
+            }
+
+            console.log('Updated Deck after Save:', { [userAnswer]: deck });
+            return { ...prevDecks, [userAnswer]: deck };
         });
 
-        setCardText('');
-        if (cardTextRef.current) {
-            cardTextRef.current.innerText = '';
-        }
+        setFrontText('');
+        setBackText('');
+        cardTextRef.current.innerText = '';
     };
+
+    const isSaveDisabled = !frontText || !backText;
 
     return (
         <main className='flashcardSection'>
@@ -115,7 +124,13 @@ export function Flashcard({ setFlashcardDecks, userAnswer }) {
                 <button className='flipCard' onClick={handleFlip}>
                     {isFront ? 'Flip to Back' : 'Flip to Front'}
                 </button>
-                <button className='saveCard' onClick={handleSave}>Save Card</button>
+                <button 
+                    className='saveCard' 
+                    onClick={handleSave} 
+                    disabled={isSaveDisabled}
+                >
+                    Save Card
+                </button>
             </div>
             <section className='createdCards'></section>
         </main>

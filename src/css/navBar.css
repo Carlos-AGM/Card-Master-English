@@ -37,20 +37,10 @@
     border: 1px solid black;
     border-radius: 8px;
     padding: 0.5em;
-    opacity: 0.9;
     transition: background .3s ease;
     &:hover{
         background-color: var(--blue-color);
         color: var(--black-color);
-    }
-}
-
-@keyframes blink{
-    300%{
-        opacity: 0
-    }
-    60%{
-        opacity: .5;
     }
 }
 
@@ -62,7 +52,6 @@
     border-radius: 8px;
     padding: 0.5em;
     transition: background .3s ease;
-    animation: blink 4s linear infinite;
     &:hover{
         animation: none;
         background-color: var(--blue-color);
