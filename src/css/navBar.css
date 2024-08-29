@@ -1,6 +1,6 @@
 :root {
     --black-color: #282c34;
-    --grey-color: #56585e;
+    --gray-color: #56585e;
     --blue-color: #79acc2
 }
 
@@ -39,7 +39,7 @@
     padding: 0.5em;
     transition: background .3s ease;
     &:hover{
-        background-color: var(--blue-color);
+        background-color: var(--gray-color);
         color: var(--black-color);
     }
 }
@@ -54,7 +54,7 @@
     transition: background .3s ease;
     &:hover{
         animation: none;
-        background-color: var(--blue-color);
+        background-color: var(--gray-color);
         color: var(--black-color);
     }
 }
