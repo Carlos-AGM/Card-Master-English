@@ -119,6 +119,15 @@ h2{
   font-family: 'Roboto';
 }
 
+.link {
+  text-decoration: none;
+  height: 100%;
+  padding: 0.4em;
+  width: auto;
+  justify-content: center;
+  align-items: center;
+}
+
 .popoverButton:hover {
   background-color: var(--black-color);
   color: white;

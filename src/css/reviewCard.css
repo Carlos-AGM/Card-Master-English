@@ -1,0 +1,96 @@
+:root {
+    --black-color: #282c34;
+    --gray-color: #56585e;
+    --blue-color: #79acc2;
+    --card-color: #dddddd;
+}
+
+.reviewCardContainer {
+    background-color: var(--blue-color);
+    display: flex;
+    position: absolute;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 8vh);
+    width: 100%;
+    top: 8vh;
+}
+
+.cardWrapper {
+    position: relative;
+    background-color: var(--card-color);
+    border-radius: 1em;
+    width: 300px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1em;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+}
+
+.cardContent {
+    text-align: center;
+    font-family: 'Roboto';
+    font-size: 300;
+}
+
+/* Estilos para botones de navegación de mazos */
+.previousButton, .nextButton {
+    display: flex;
+    justify-content: center;
+    padding: 0.3em;
+    margin: 12px;
+    background-color: var(--black-color);
+    color: var(--card-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Deshabilitar botones cuando no sean necesarios */
+.previousButton:disabled, .nextButton:disabled {
+    background-color: var(--black-color);
+    cursor: not-allowed;
+}
+
+.deckButton {
+    margin-top: 10px;
+    padding: 0.5em 1em;
+    background-color: var(--black-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.deckButton:hover {
+    background-color: var(--gray-color);
+}
+
+.reviewCardTitle {
+    color: var(--black-color);
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1em;
+}
+
+.flipButton {
+    position: absolute;
+    bottom: 50px;
+    padding: 0.5em 1em;
+    background-color: var(--black-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.flipButton:hover {
+    background-color: var(--gray-color);
+}

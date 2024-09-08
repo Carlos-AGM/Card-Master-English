@@ -21,7 +21,7 @@ body {
 }
 
 .sideBarInfo{
-  width: 20%;
+  width: 20%; /*try with 25 percent*/ 
   margin-top: 8vh;
   background-color: var(--gray-color);
   border-right: 2px solid var(--black-color);

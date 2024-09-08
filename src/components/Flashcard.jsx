@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import '../css/flashcard.css';
 
@@ -9,6 +10,7 @@ export function Flashcard({ setFlashcardDecks, userAnswer, handleCreateNewDeck }
   const [currentCardIndex, setCurrentCardIndex] = useState(null);
   const [showPopover, setShowPopover] = useState(false);
   const cardTextRef = useRef(null);
+  const navigate = useNavigate()
 
   useEffect(() => {
     const element = cardTextRef.current;
@@ -23,7 +25,7 @@ export function Flashcard({ setFlashcardDecks, userAnswer, handleCreateNewDeck }
 
   useEffect(() => {
     if (showPopover) {
-      // Aquí puedes añadir cualquier lógica adicional que dependa de showPopover
+      // Aquí puedes añadir cualquier logica adicional que dependa de showPopover
     }
   }, [showPopover]);
 
@@ -109,29 +111,36 @@ export function Flashcard({ setFlashcardDecks, userAnswer, handleCreateNewDeck }
   };
   
   const handlePopoverButtonClick = (action) => {
-    if (action === 'createCard') {
-      setFlashcardDecks(prevDecks => {
-        const deck = prevDecks[userAnswer] || [];
-        const newCard = { front: '', back: '' };
+    if (action === 'reviewCards') {
+        setFlashcardDecks(prevDecks => {
+            console.log('Navigating to review cards with decks:', prevDecks);
+            navigate('/reviewCards', { state: { flashcardDecks: prevDecks } });
+            return prevDecks;
+        });
+    } else if (action === 'createCard') {
+        setFlashcardDecks(prevDecks => {
+            const deck = prevDecks[userAnswer] || [];
+            const newCard = { front: '', back: '' };
   
-        const updatedDeck = [...deck, newCard];
-        console.log('New Flashcard Created:', newCard);
-        console.log('Updated Deck:', updatedDeck);
+            const updatedDeck = [...deck, newCard];
+            console.log('New Flashcard Created:', newCard);
+            console.log('Updated Deck:', updatedDeck);
   
-        const updatedDecks = { ...prevDecks, [userAnswer]: updatedDeck };
-        console.log('Updated Decks after Create Card:', updatedDecks);
-        setCurrentCardIndex(updatedDeck.length - 1); // Apuntar al índice de la nueva tarjeta
-        return updatedDecks;
-      });
+            const updatedDecks = { ...prevDecks, [userAnswer]: updatedDeck };
+            console.log('Updated Decks after Create Card:', updatedDecks);
+            setCurrentCardIndex(updatedDeck.length - 1); // Apuntar al índice de la nueva tarjeta
+            return updatedDecks;
+        });
   
-      setFrontText('');  // Limpiar el texto del frente
-      setBackText('');   // Limpiar el texto de la parte trasera
-      cardTextRef.current.innerText = ''; // Limpiar el contenido del área de texto
-      setIsFront(true);  // Restablecer el estado a "Flip to Front"
+        // Restablecer el estado de la tarjeta
+        setFrontText('');  // Limpiar el texto del frente
+        setBackText('');   // Limpiar el texto de la parte trasera
+        cardTextRef.current.innerText = ''; // Limpiar el contenido del área de texto
+        setIsFront(true);  // Restablecer el estado a "Flip to Front"
     } else if (action === 'createDeck') {
-      handleCreateNewDeck(); // Llama a la función en WorkArea para manejar la creación de un nuevo deck
+        handleCreateNewDeck(); // Llama a la función en WorkArea para manejar la creación de un nuevo deck
     }
-  
+
     setShowPopover(false); // Ocultar el popover después de seleccionar una acción
   };
 
