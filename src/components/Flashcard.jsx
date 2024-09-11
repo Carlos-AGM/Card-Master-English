@@ -155,6 +155,7 @@ export function Flashcard({ setFlashcardDecks, userAnswer, handleCreateNewDeck }
         <p
           className='flashcardTextArea'
           contentEditable="true"
+          spellCheck="true"
           onInput={handleInput}
           ref={cardTextRef}
           onClick={() => cardTextRef.current.focus()}
@@ -205,6 +206,7 @@ export function Flashcard({ setFlashcardDecks, userAnswer, handleCreateNewDeck }
 }
 
 Flashcard.propTypes = {
+  flashcardDecks: PropTypes.object.isRequired,
   setFlashcardDecks: PropTypes.func.isRequired,
   userAnswer: PropTypes.string.isRequired,
   handleCreateNewDeck: PropTypes.func.isRequired, // Añadido PropTypes para la nueva prop

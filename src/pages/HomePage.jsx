@@ -20,7 +20,7 @@ export function HomePage() {
                     <div className='imageTextAnswer'>
                         <p>- Clearly, Card Master English!</p>
                     </div>
-                    <Link to='/SignIn' className='imageTextButton'>Start Now!</Link>
+                    <Link to='/workArea' className='imageTextButton'>Start Now!</Link> {/*could be Link to = 'workArea' to skip log in*/}
                 </section>
             </main>
         </div>

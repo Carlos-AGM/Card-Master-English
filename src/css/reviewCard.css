@@ -3,6 +3,8 @@
     --gray-color: #56585e;
     --blue-color: #79acc2;
     --card-color: #dddddd;
+    --red-color: #e81123;
+    --dark-red: #A40000
 }
 
 .reviewCardContainer {
@@ -17,13 +19,30 @@
     top: 8vh;
 }
 
+.noDecksAvailableContainer {
+    background-color: var(--blue-color);
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 8vh);
+    width: 100%;
+    top: 8vh;
+}
+
+.noDecksAvailableContainer {
+    color: var(--card-color);
+}
+
 .cardWrapper {
+    display: flex;
     position: relative;
     background-color: var(--card-color);
     border-radius: 1em;
     width: 300px;
     height: 400px;
-    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -49,6 +68,9 @@
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    &:hover {
+        color: var(--blue-color);
+    }
 }
 
 /* Deshabilitar botones cuando no sean necesarios */
@@ -66,7 +88,11 @@
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    text-decoration: none;
+    font-family: 'Roboto';
 }
+
+
 
 .deckButton:hover {
     background-color: var(--gray-color);
@@ -93,4 +119,66 @@
 
 .flipButton:hover {
     background-color: var(--gray-color);
+}
+
+.backButton {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--black-color);
+}
+
+.backButton:hover {
+    color: var(--blue-color);
+}
+
+.deleteDeck, .deleteFlashcard {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--red-color);
+}
+
+.deleteDeck:hover, .deleteFlashcard:hover {
+    color: var(--dark-red);
+}
+
+.popoverReviewCard {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -30%);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #e0e0e0;
+    border: 0.5px solid ;
+    border-radius: 8px;
+    padding: 1em;
+    box-shadow: 0 0 10px;
+    z-index: 1000;
+    h4 {
+        margin: 0
+    }
+}
+
+.popoverButton {
+    display: block;
+    width: 100%;
+    padding: 0.5em;
+    margin-top: 0.5em;
+    background-color: var(--blue-color);
+    color: solid var(--black-color);
+    border: none;
+    border-radius: 4px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: 'Roboto';
 }

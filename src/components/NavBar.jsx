@@ -6,8 +6,8 @@ export function NavBar () {
         <div className={'navBar'}>
             <Link to='/' className='navAnchor'>Card Master English</Link>
             <div className='authMenu'>
-                <Link to='/LogIn' className='navLogIn'>Log In</Link>
-                <Link to='/SignIn' className='navSignIn'>Sign In</Link>
+                {/* <Link to='/LogIn' className='navLogIn'>Log In</Link> */}
+                {/* <Link to='/SignIn' className='navSignIn'>Sign In</Link> */}
             </div>
         </div>
     )

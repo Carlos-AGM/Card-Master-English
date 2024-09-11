@@ -7,7 +7,7 @@ import {
   ChatCompletionUserMessageParam,
   ChatCompletionAssistantMessageParam
 } from "@mlc-ai/web-llm";
-import '../css/assistentIA.css';
+import '../css/assistantIA.css';
 
 export function AssistantIA() {
   const [messageText, setMessageText] = useState('');

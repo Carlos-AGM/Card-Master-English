@@ -1,29 +1,33 @@
 import { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate, Link} from 'react-router-dom';
 import { NavBar } from '../components/NavBar';
 import PropTypes from 'prop-types';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import '../css/reviewCard.css';
 
 
 export function ReviewCards() {
     const location = useLocation();
+    const navigate = useNavigate()
     const flashcardDecks = location.state?.flashcardDecks || {};
     const deckKeys = Object.keys(flashcardDecks);
 
-    // Estados para manejar el mazo, flashcard actual y si está viendo el front o el back
+    // Estados para manejar el mazo, flashcard actual, etc.
     const [currentDeckIndex, setCurrentDeckIndex] = useState(0);
     const [currentCardIndex, setCurrentCardIndex] = useState(null); // null indica que estamos viendo los mazos
     const [isFront, setIsFront] = useState(true); // Estado para determinar si estamos en front o back
+    const [showDeleteDeckPopup, setShowDeleteDeckPopup] = useState(false); // Estado para controlar el popup
 
     // Si no hay mazos disponibles, mostramos un mensaje
     if (deckKeys.length === 0) {
         return (
             <>
                 <NavBar />
-                <div className="reviewCardContainer">
-                    <h2>No flashcards available</h2>
+                <div className="noDecksAvailableContainer">
+                    <h2>No decks available</h2>
+                    <Link to='/workArea' className='noDecksAvailable deckButton'>Return to work area</Link>
                 </div>
             </>
         );
@@ -71,6 +75,35 @@ export function ReviewCards() {
         setIsFront(!isFront); // Cambiamos entre front y back
     };
 
+    // Función para volver a la vista anterior
+    const handleGoBack = () => {
+        navigate('/workArea'); // Ajusta esta ruta a la ruta de la que proviene el usuario
+    };
+
+    const handleDeleteDeck = (deckKey) => {
+        const updatedDecks = { ...flashcardDecks };
+        delete updatedDecks[deckKey]; // Elimina el mazo del objeto
+        navigate('/reviewCards', { state: { flashcardDecks: updatedDecks } }); // Redirige a 'workArea' con los mazos actualizados
+    };
+
+    const handleDeleteFlashcard = (cardIndex) => {
+        const currentDeck = [...flashcardDecks[deckKeys[currentDeckIndex]]];
+        currentDeck.splice(cardIndex, 1);
+        const updatedDecks = { ...flashcardDecks, [deckKeys[currentDeckIndex]]: currentDeck };
+        
+        if (currentDeck.length === 0) {
+            setShowDeleteDeckPopup(true);  // Mostrar popup
+        } else {
+            navigate('/reviewCards', { state: { flashcardDecks: updatedDecks } });
+        }
+    };
+
+    const handleCreateNewFlashcard = (deckKey) => {
+        navigate('/workArea', {
+            state: { flashcardDecks: flashcardDecks, deckKey, creatingNewCard: true },
+        });
+    };
+
     // Obtenemos el mazo y las flashcards actuales
     const currentDeck = flashcardDecks[deckKeys[currentDeckIndex]];
     const currentCard = currentCardIndex !== null ? currentDeck[currentCardIndex] : null;
@@ -85,10 +118,9 @@ export function ReviewCards() {
                         className="previousButton"
                         onClick={handlePreviousDeck}
                         disabled={currentDeckIndex === 0}
-                    >
-                        Previous Deck
-                    </ChevronLeftIcon>
+                    />
                 )}
+
                 {/* Botones de navegación de flashcards */}
                 {currentCardIndex !== null && (
                     <>
@@ -96,18 +128,29 @@ export function ReviewCards() {
                             className="previousButton"
                             onClick={handlePreviousCard}
                             disabled={currentCardIndex === 0}
-                        >
-                            Previous Card
-                        </ChevronLeftIcon>
+                        />
                     </>
-                    )}
+                )}
+
                 <div className="cardWrapper">
                     <div className="cardContent">
                         {currentCardIndex === null ? (
                             // Muestra el nombre del mazo si estamos en modo de navegación de mazos
-                            <>
-                                <h2 className='reviewCardTitle'>{deckKeys[currentDeckIndex]}</h2>
-                                <p>Click to view flashcards</p>
+                            <>  
+                                <ArrowBackIcon
+                                    className='backButton'
+                                    onClick={handleGoBack}
+                                />
+                                {currentCardIndex === null && (
+                                    <button
+                                        className="deleteDeck"
+                                        onClick={() => handleDeleteDeck(deckKeys[currentDeckIndex])}
+                                    >
+                                        &#10006; {/* X para eliminar el mazo */}
+                                    </button>
+                                )}
+                                <h2 className='reviewCardTitle'>Deck {currentDeckIndex + 1} of {deckKeys.length}</h2>
+                                <p>{deckKeys[currentDeckIndex]}</p>
                                 <button className="deckButton" onClick={handleDeckClick}>
                                     View flashcards
                                 </button>
@@ -115,8 +158,37 @@ export function ReviewCards() {
                         ) : (
                             // Muestra las flashcards del mazo actual
                             <>
-                                <h2 className='reviewCardTitle'>Flashcard {currentCardIndex + 1} of {currentDeck.length}</h2>
-                                <p>{isFront ? currentCard?.front : currentCard?.back || 'No content available'}</p>
+                                {/* Si estamos viendo flashcards, muestra el botón de volver a los mazos */}
+                                {currentCardIndex !== null && (
+                                    <ArrowBackIcon
+                                        className="backButton"
+                                        onClick={() => setCurrentCardIndex(null)} // Regresa a la lista de mazos
+                                    />
+                                )}
+                                {currentCardIndex !== null && (
+                                    <button
+                                        className="deleteFlashcard"
+                                        onClick={() => handleDeleteFlashcard(currentCardIndex)}
+                                    >
+                                        &#10006; {/* X para eliminar la flashcard */}
+                                    </button>
+                                )}
+                                <h2 className='reviewCardTitle'>Flashcard {currentDeck.length === 0 ? 0 : currentCardIndex + 1} of {currentDeck.length}</h2>
+                                <p>{(isFront ? currentCard?.front : currentCard?.back) || 'No content available'}</p>
+                                {showDeleteDeckPopup && (
+                                    <div className='popoverReviewCard'>
+                                        <h4>You removed the last flashcard from this deck </h4>
+                                        <p>What would you like to do?</p>
+                                        <button 
+                                            className='popoverButton' 
+                                            onClick={() => handleDeleteDeck(deckKeys[currentDeckIndex])}
+                                        >Delete deck</button>
+                                        <button 
+                                            className='popoverButton' 
+                                            onClick={() => handleCreateNewFlashcard(deckKeys[currentDeckIndex])}
+                                        >Create a new flashcard</button>
+                                    </div>
+                                )}
                             </>
                         )}
                     </div>
@@ -127,21 +199,17 @@ export function ReviewCards() {
                             {isFront ? 'Flip to Back' : 'Flip to Front'}
                         </button>
                     )}
-
-                    
-
-                    
                 </div>
+
                 {/* Botones de navegación de mazos */}
                 {currentCardIndex === null && (
                     <ChevronRightIcon
-                    className="nextButton"
-                    onClick={handleNextDeck}
-                    disabled={currentDeckIndex === deckKeys.length - 1}
-                    >
-                        Next Deck
-                    </ChevronRightIcon>
+                        className="nextButton"
+                        onClick={handleNextDeck}
+                        disabled={currentDeckIndex === deckKeys.length - 1}
+                    />
                 )}
+
                 {/* Botones de navegación de flashcards */}
                 {currentCardIndex !== null && (
                     <>
@@ -149,9 +217,7 @@ export function ReviewCards() {
                             className="nextButton"
                             onClick={handleNextCard}
                             disabled={currentCardIndex === currentDeck.length - 1}
-                        >
-                            Next Card
-                        </ChevronRightIcon>
+                        />
                     </>
                 )}
             </div>
