@@ -7,10 +7,9 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import '../css/reviewCard.css';
 
-
 export function ReviewCards() {
     const location = useLocation();
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     const flashcardDecks = location.state?.flashcardDecks || {};
     const deckKeys = Object.keys(flashcardDecks);
 
@@ -83,14 +82,21 @@ export function ReviewCards() {
     const handleDeleteDeck = (deckKey) => {
         const updatedDecks = { ...flashcardDecks };
         delete updatedDecks[deckKey]; // Elimina el mazo del objeto
-        navigate('/reviewCards', { state: { flashcardDecks: updatedDecks } }); // Redirige a 'workArea' con los mazos actualizados
+        
+        // Actualizar localStorage después de eliminar un mazo
+        localStorage.setItem('flashcardDecks', JSON.stringify(updatedDecks));
+        
+        navigate('/reviewCards', { state: { flashcardDecks: updatedDecks } }); // Redirige a 'reviewCards' con los mazos actualizados
     };
 
     const handleDeleteFlashcard = (cardIndex) => {
         const currentDeck = [...flashcardDecks[deckKeys[currentDeckIndex]]];
-        currentDeck.splice(cardIndex, 1);
+        currentDeck.splice(cardIndex, 1); // Eliminar la flashcard
         const updatedDecks = { ...flashcardDecks, [deckKeys[currentDeckIndex]]: currentDeck };
         
+        // Actualizar localStorage después de eliminar una flashcard
+        localStorage.setItem('flashcardDecks', JSON.stringify(updatedDecks));
+
         if (currentDeck.length === 0) {
             setShowDeleteDeckPopup(true);  // Mostrar popup
         } else {

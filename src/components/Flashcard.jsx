@@ -10,7 +10,7 @@ export function Flashcard({ setFlashcardDecks, userAnswer, handleCreateNewDeck }
   const [currentCardIndex, setCurrentCardIndex] = useState(null);
   const [showPopover, setShowPopover] = useState(false);
   const cardTextRef = useRef(null);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
     const element = cardTextRef.current;
@@ -25,7 +25,7 @@ export function Flashcard({ setFlashcardDecks, userAnswer, handleCreateNewDeck }
 
   useEffect(() => {
     if (showPopover) {
-      // Aquí puedes añadir cualquier logica adicional que dependa de showPopover
+      // Aquí puedes añadir cualquier lógica adicional que dependa de showPopover
     }
   }, [showPopover]);
 
@@ -78,8 +78,12 @@ export function Flashcard({ setFlashcardDecks, userAnswer, handleCreateNewDeck }
         console.log('Flashcard Back Saved:', backText);
       }
 
+      const updatedDecks = { ...prevDecks, [userAnswer]: updatedDeck };
+      // Guardar en localStorage al hacer flip
+      localStorage.setItem('flashcardDecks', JSON.stringify(updatedDecks));
+
       console.log('Updated Deck:', { [userAnswer]: updatedDeck });
-      return { ...prevDecks, [userAnswer]: updatedDeck };
+      return updatedDecks;
     });
 
     setIsFront(!isFront);
@@ -89,7 +93,7 @@ export function Flashcard({ setFlashcardDecks, userAnswer, handleCreateNewDeck }
   const handleSave = () => {
     setFlashcardDecks(prevDecks => {
       const deck = prevDecks[userAnswer] || [];
-  
+
       if (currentCardIndex !== null) {
         deck[currentCardIndex] = { front: frontText, back: backText };
       } else {
@@ -98,47 +102,53 @@ export function Flashcard({ setFlashcardDecks, userAnswer, handleCreateNewDeck }
         setCurrentCardIndex(deck.length - 1);
         console.log('New Card Added:', newCard);
       }
-  
+
       const updatedDecks = { ...prevDecks, [userAnswer]: deck };
       console.log('Updated Deck after Save:', updatedDecks);
+      // Guardar en localStorage al guardar la tarjeta
+      localStorage.setItem('flashcardDecks', JSON.stringify(updatedDecks));
+
       return updatedDecks;
     });
-  
+
     setFrontText('');
     setBackText('');
     cardTextRef.current.innerText = '';
     setShowPopover(true); // Mostrar el popover al guardar la tarjeta
   };
-  
+
   const handlePopoverButtonClick = (action) => {
     if (action === 'reviewCards') {
-        setFlashcardDecks(prevDecks => {
-            console.log('Navigating to review cards with decks:', prevDecks);
-            navigate('/reviewCards', { state: { flashcardDecks: prevDecks } });
-            return prevDecks;
-        });
+      setFlashcardDecks(prevDecks => {
+        console.log('Navigating to review cards with decks:', prevDecks);
+        navigate('/reviewCards', { state: { flashcardDecks: prevDecks } });
+        return prevDecks;
+      });
     } else if (action === 'createCard') {
-        setFlashcardDecks(prevDecks => {
-            const deck = prevDecks[userAnswer] || [];
-            const newCard = { front: '', back: '' };
-  
-            const updatedDeck = [...deck, newCard];
-            console.log('New Flashcard Created:', newCard);
-            console.log('Updated Deck:', updatedDeck);
-  
-            const updatedDecks = { ...prevDecks, [userAnswer]: updatedDeck };
-            console.log('Updated Decks after Create Card:', updatedDecks);
-            setCurrentCardIndex(updatedDeck.length - 1); // Apuntar al índice de la nueva tarjeta
-            return updatedDecks;
-        });
-  
-        // Restablecer el estado de la tarjeta
-        setFrontText('');  // Limpiar el texto del frente
-        setBackText('');   // Limpiar el texto de la parte trasera
-        cardTextRef.current.innerText = ''; // Limpiar el contenido del área de texto
-        setIsFront(true);  // Restablecer el estado a "Flip to Front"
+      setFlashcardDecks(prevDecks => {
+        const deck = prevDecks[userAnswer] || [];
+        const newCard = { front: '', back: '' };
+
+        const updatedDeck = [...deck, newCard];
+        console.log('New Flashcard Created:', newCard);
+        console.log('Updated Deck:', updatedDeck);
+
+        const updatedDecks = { ...prevDecks, [userAnswer]: updatedDeck };
+        console.log('Updated Decks after Create Card:', updatedDecks);
+        // Guardar en localStorage al crear una nueva tarjeta
+        localStorage.setItem('flashcardDecks', JSON.stringify(updatedDecks));
+
+        setCurrentCardIndex(updatedDeck.length - 1); // Apuntar al índice de la nueva tarjeta
+        return updatedDecks;
+      });
+
+      // Restablecer el estado de la tarjeta
+      setFrontText('');
+      setBackText('');
+      cardTextRef.current.innerText = '';
+      setIsFront(true);  // Restablecer el estado a "Flip to Front"
     } else if (action === 'createDeck') {
-        handleCreateNewDeck(); // Llama a la función en WorkArea para manejar la creación de un nuevo deck
+      handleCreateNewDeck(); // Llama a la función en WorkArea para manejar la creación de un nuevo deck
     }
 
     setShowPopover(false); // Ocultar el popover después de seleccionar una acción

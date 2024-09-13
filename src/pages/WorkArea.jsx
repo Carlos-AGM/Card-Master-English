@@ -15,12 +15,18 @@ export function WorkArea() {
     const { creatingNewCard, deckKey } = location.state || {};
 
     useEffect(() => {
+        // Cargar mazos desde localStorage
+        const storedDecks = localStorage.getItem('flashcardDecks');
+        if (storedDecks) {
+            setFlashcardDecks(JSON.parse(storedDecks));
+        }
+
         // Verifica si viene de un redireccionamiento para crear una nueva flashcard
         if (creatingNewCard) {
             setUserAnswer(deckKey); // Establecer el nombre del mazo
             setShowFlashcard(true); // Mostrar el componente Flashcard
         }
-    }, [creatingNewCard, deckKey]); // Solo observar estas dos propiedades, no todo location.state
+    }, [creatingNewCard, deckKey]); // Solo observar estas dos propiedades
 
     const handleInputChange = (e) => {
         setUserAnswer(e.target.value);
@@ -29,6 +35,13 @@ export function WorkArea() {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (userAnswer.trim() !== '') {
+            setFlashcardDecks(prevDecks => {
+                // Si el mazo ya existe, no lo sobrescribas
+                const updatedDecks = { ...prevDecks, [userAnswer]: prevDecks[userAnswer] || [] };
+                // Guardar los mazos en localStorage
+                localStorage.setItem('flashcardDecks', JSON.stringify(updatedDecks));
+                return updatedDecks;
+            });
             setShowFlashcard(true);
         }
     };
