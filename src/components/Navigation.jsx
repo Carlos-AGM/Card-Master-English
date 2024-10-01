@@ -5,6 +5,7 @@ import { HomePage } from '../pages/HomePage.jsx';
 import { LogIn } from '../pages/LogIn.jsx'
 import { SignIn } from '../pages/SignIn.jsx';
 import { ReviewCards } from '../pages/ReviewCards.jsx';
+import { ReviewPredefinedDecks } from '../pages/ReviewPredefinedDecks.jsx';
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
   {
     path: '/reviewCards/',
     element: <ReviewCards/>
+  },
+  {
+    path: '/reviewPredefinedDecks/',
+    element: <ReviewPredefinedDecks/>
   }
 ]);
 
