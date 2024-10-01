@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 // import { AssistantIA } from '../components/AssistantIA'
 import { NavBar } from '../components/NavBar';
 import { Flashcard } from '../components/Flashcard';
@@ -9,8 +9,9 @@ export function WorkArea() {
     const [userAnswer, setUserAnswer] = useState(''); // Nombre del mazo
     const [showFlashcard, setShowFlashcard] = useState(false); // Muestra el componente Flashcard
     const [flashcardDecks, setFlashcardDecks] = useState({});
+    const navigate = useNavigate();
+    
     const location = useLocation();
-
     // Desestructurar las propiedades que necesitas de location.state
     const { creatingNewCard, deckKey } = location.state || {};
 
@@ -54,6 +55,11 @@ export function WorkArea() {
         });
     };
 
+    const handleButtonClick = () => {
+        console.log('Navigating to review cards with decks:', flashcardDecks);
+        navigate('/reviewCards', { state: { flashcardDecks: flashcardDecks } });
+    }
+
     return (
         <div>
             <NavBar />
@@ -73,6 +79,15 @@ export function WorkArea() {
                                 placeholder='Type your answer here...'
                             />
                         </form>
+                        <div className="lineWithText">
+                            <span>Or</span>
+                        </div>
+                        <button 
+                            className='reviewButton'
+                            onClick={handleButtonClick}
+                        >
+                            Review Decks
+                        </button>
                     </div>
                 )}
                 {showFlashcard && (
