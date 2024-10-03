@@ -90,9 +90,8 @@
     transition: background-color 0.3s ease;
     text-decoration: none;
     font-family: 'Roboto';
+    margin-bottom: 2em;
 }
-
-
 
 .deckButton:hover {
     background-color: var(--gray-color);
@@ -102,11 +101,17 @@
     color: var(--black-color);
     font-size: 1.5rem;
     font-weight: bold;
-    margin-bottom: 1em;
+
+}
+
+.flashcardText {
+    margin-top: 6em;
+    margin-bottom: 5.5em;
+    font-size: large;
 }
 
 .flipButton {
-    position: absolute;
+    position: flex;
     bottom: 50px;
     padding: 0.5em 1em;
     background-color: var(--black-color);
@@ -115,6 +120,7 @@
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    margin-bottom: 2em;
 }
 
 .flipButton:hover {

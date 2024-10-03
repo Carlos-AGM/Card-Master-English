@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-// import { AssistantIA } from '../components/AssistantIA'
+import { AssistantIA } from '../components/AssistantIA'
 import { NavBar } from '../components/NavBar';
 import { Flashcard } from '../components/Flashcard';
 import '../css/workArea.css';
@@ -24,10 +24,10 @@ export function WorkArea() {
 
         // Verifica si viene de un redireccionamiento para crear una nueva flashcard
         if (creatingNewCard) {
-            setUserAnswer(deckKey); // Establecer el nombre del mazo
+            setUserAnswer(deckKey); // Configura el nombre del mazo
             setShowFlashcard(true); // Mostrar el componente Flashcard
         }
-    }, [creatingNewCard, deckKey]); // Solo observar estas dos propiedades
+    }, [creatingNewCard, deckKey]); 
 
     const handleInputChange = (e) => {
         setUserAnswer(e.target.value);
@@ -65,7 +65,7 @@ export function WorkArea() {
             <NavBar />
             <div className='mainContainer'>
                 <aside className='assistantIA'>
-                    {/* <AssistantIA /> */}
+                    <AssistantIA />
                 </aside>
                 {!showFlashcard && (
                     <div className='firstDeck'>

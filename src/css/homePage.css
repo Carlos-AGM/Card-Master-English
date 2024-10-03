@@ -181,7 +181,13 @@ body {
   transition: transform 0.3s ease, background-color 0.3s ease; 
   &:hover{
     background-color: #56585e; 
-    transform: translateY(-5px); 
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    /* border: 2px solid var(--black-color);  */
   }
 }
 
+.asideTitle {
+  display: flex;
+  justify-content: center;
+}

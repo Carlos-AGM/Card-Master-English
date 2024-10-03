@@ -74,7 +74,7 @@ export function ReviewPredefinedDecks() {
 
     // Función para volver a la vista anterior
     const handleGoBack = () => {
-        navigate('/'); // Ajusta esta ruta a la página de inicio
+        navigate('/homepage'); // Ajusta esta ruta a la página de inicio
     };
 
     if (!predefinedDecks.length) {

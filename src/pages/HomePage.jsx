@@ -15,6 +15,7 @@ export function HomePage() {
     return (
         <div className={'app'}>
             <aside className='sideBarInfo'>
+                <h2 className='asideTitle'>Predefined Decks</h2>
                 <div className='predefinedDeckCard' onClick={() => handleNavigateToPredefinedDecks('A1')}>
                     <p>A1</p>
                 </div>
@@ -27,7 +28,7 @@ export function HomePage() {
                 <section className='imageContainer'>
                     <img className='homePageImage' src={homePageImage} alt='A man thinking about what is the best teaching resource to study English.' loading='lazy' />
                     <div className='imageTextQuestion'>
-                        <p> Which is one of the best tools to learn vocabulary?</p>
+                        <p> Which is one of the best tools to learn vocabulary in English?</p>
                     </div>
                     <div className='imageTextAnswer'>
                         <p>- Clearly, Card Master English!</p>

@@ -25,7 +25,7 @@ export function Flashcard({ setFlashcardDecks, userAnswer, handleCreateNewDeck }
 
   useEffect(() => {
     if (showPopover) {
-      // Aquí puedes añadir cualquier lógica adicional que dependa de showPopover
+      //
     }
   }, [showPopover]);
 
@@ -219,5 +219,5 @@ Flashcard.propTypes = {
   flashcardDecks: PropTypes.object.isRequired,
   setFlashcardDecks: PropTypes.func.isRequired,
   userAnswer: PropTypes.string.isRequired,
-  handleCreateNewDeck: PropTypes.func.isRequired, // Añadido PropTypes para la nueva prop
+  handleCreateNewDeck: PropTypes.func.isRequired,
 };

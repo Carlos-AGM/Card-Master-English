@@ -63,18 +63,18 @@ export function ReviewCards() {
         }
     };
 
-    // Click en la card del mazo para mostrar las flashcards
+    // Boton en la card del mazo para mostrar las flashcards
     const handleDeckClick = () => {
         setCurrentCardIndex(0); // Empezamos en la primera flashcard del mazo
         setIsFront(true); // Aseguramos que se muestra la parte "Front"
     };
 
-    // Función para hacer flip a la card
+    // Funcion para hacer flip a la card
     const handleFlipCard = () => {
         setIsFront(!isFront); // Cambiamos entre front y back
     };
 
-    // Función para volver a la vista anterior
+    // Funcion para volver a la vista anterior
     const handleGoBack = () => {
         navigate('/workArea'); // Ajusta esta ruta a la ruta de la que proviene el usuario
     };
@@ -156,7 +156,7 @@ export function ReviewCards() {
                                     </button>
                                 )}
                                 <h2 className='reviewCardTitle'>Deck {currentDeckIndex + 1} of {deckKeys.length}</h2>
-                                <p>{deckKeys[currentDeckIndex]}</p>
+                                <p className='flashcardText' >{deckKeys[currentDeckIndex]}</p>
                                 <button className="deckButton" onClick={handleDeckClick}>
                                     View flashcards
                                 </button>
@@ -180,7 +180,7 @@ export function ReviewCards() {
                                     </button>
                                 )}
                                 <h2 className='reviewCardTitle'>Flashcard {currentDeck.length === 0 ? 0 : currentCardIndex + 1} of {currentDeck.length}</h2>
-                                <p>{(isFront ? currentCard?.front : currentCard?.back) || 'No content available'}</p>
+                                <p className='flashcardText' >{(isFront ? currentCard?.front : currentCard?.back) || 'No content available'}</p>
                                 {showDeleteDeckPopup && (
                                     <div className='popoverReviewCard'>
                                         <h4>You removed the last flashcard from this deck </h4>

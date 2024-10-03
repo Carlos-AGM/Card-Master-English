@@ -1,20 +1,169 @@
 {
     "decks": [
         {
-            "deckName": "Numbers",
+            "deckName": "Greetings",
             "cards": [
-                { "front": "One", "back": "Uno" },
-                { "front": "Two", "back": "Dos" },
-                { "front": "Three", "back": "Tres" }
+                { "front": "How do you say 'Hola' in an informal way?", "back": "Hi" },
+                { "front": "How do you greet someone in the morning?", "back": "Good morning" },
+                { "front": "What's up?", "back": "¿Qué tal?" },
+                { "front": "What greeting is used in the afternoon?", "back": "Good afternoon" },
+                { "front": "How's it going?", "back": "¿Cómo te va?" },
+                { "front": "How do you greet someone in the evening?", "back": "Good evening" }
             ]
         },
         {
-            "deckName": "Colors",
+            "deckName": "Verb Be",
             "cards": [
-                { "front": "Red", "back": "Rojo" },
+                { "front": "I", "back": "Yo" },
+                { "front": "You", "back": "Tú/Ustedes" },
+                { "front": "He", "back": "Él" },
+                { "front": "She", "back": "Ella" },
+                { "front": "It", "back": "Ese/Eso" },
+                { "front": "We", "back": "Nosotros" },
+                { "front": "They", "back": "Ellos/Ellas" }
+            ]   
+        },
+        {
+            "deckName": "Introducing Yourself",
+            "cards": [
+                { "front": "Hi, I'm…", "back": "Hola, soy…" },
+                { "front": "Let me introduce myself", "back": "Permíteme presentarme." },
+                { "front": "Hello, my name is…", "back": "Hola, mi nombre es…" },
+                { "front": "I'm from…", "back": "Soy de…" },
+                { "front": "I'm… years old", "back": "Tengo… años" }
+            ]   
+        },
+        {
+            "deckName": "Say Bye",
+            "cards": [
+                { "front": "Goodbye", "back": "Adiós" },
+                { "front": "Bye", "back": "Adiós" },
+                { "front": "What does 'See you later' mean in Spanish?", "back": "Te veo más tarde." },
+                { "front": "How do you say 'Cuídate' in English?", "back": "Cuídate" },
+                { "front": "Have a nice day", "back": "Que tengas un buen día" },
+                { "front": "Catch you later", "back": "Te veo después" },
+                { "front": "What do you say before going to sleep?", "back": "Good night" }
+            ]
+        },
+        {
+            "deckName": "How Are You?",
+            "cards": [
+                { "front": "How do you ask '¿Cómo estás?' in English?", "back": "How are you?" },
+                { "front": "How do you ask '¿Cómo te va?' in English?", "back": "Azul" },
+                { "front": "How do you respond to 'How are you?' in a formal way?", "back": "I’m fine, thank you." },
+                { "front": "How do you say 'Estoy bien' in an informal way?", "back": "I'm good." },
                 { "front": "Blue", "back": "Azul" },
                 { "front": "Green", "back": "Verde" }
             ]
+        },
+        {
+            "deckName": "Cardinal Numbers",
+            "cards": [
+                { "front": "One", "back": "Uno" },
+                { "front": "Two", "back": "Dos" },
+                { "front": "Three", "back": "Tres" },
+                { "front": "Four", "back": "Cuatro" },
+                { "front": "Five", "back": "Cinco" },
+                { "front": "Six", "back": "Seis" },
+                { "front": "Seven", "back": "Siete" },
+                { "front": "Eight", "back": "Ocho" },
+                { "front": "Nine", "back": "Nueve" },
+                { "front": "Ten", "back": "Diez" },
+                { "front": "Eleven", "back": "Once" },
+                { "front": "Twelve", "back": "Doce" },
+                { "front": "Thirteen", "back": "Trece" },
+                { "front": "Fourteen", "back": "Catorce" },
+                { "front": "Fifteen", "back": "Quince" },
+                { "front": "Sixteen", "back": "Dieciséis" },
+                { "front": "Seventeen", "back": "Diecisiete" },
+                { "front": "Eighteen", "back": "Dieciocho" },
+                { "front": "Nineteen", "back": "Diecinueve" },
+                { "front": "Twenty", "back": "Veinte" },
+                { "front": "Twenty-One", "back": "Ventiuno" },
+                { "front": "Twenty-Two", "back": "Veintidós" },
+                { "front": "Twenty-Three", "back": "Veintitrés" },
+                { "front": "Twenty-Four", "back": "Veinticuatro" },
+                { "front": "Twenty-Five", "back": "Veinticinco" },
+                { "front": "Twenty-Six", "back": "Veintiséis" },
+                { "front": "Twenty-Seven", "back": "Veintisiete" },
+                { "front": "Twenty-Eight", "back": "Veintiocho" },
+                { "front": "Twenty-Nine", "back": "Veintinueve" },
+                { "front": "Thirty", "back": "Treinta" },
+                { "front": "Forty", "back": "Cuarenta" },
+                { "front": "Fifty", "back": "Cincuenta" },
+                { "front": "Sixty", "back": "Sesenta" },
+                { "front": "Seventy", "back": "Setenta" },
+                { "front": "Eighty", "back": "Ochenta" },
+                { "front": "Ninety", "back": "Noventa" },
+                { "front": "One Hundred", "back": "Cien" },
+                { "front": "One Thousand", "back": "Un mil" },
+                { "front": "One Hundred Thousand", "back": "Cien mil" },
+                { "front": "One Million", "back": "Un millón" }
+            ]
+        },
+        {
+            "deckName": "Ordinal numbers",
+            "cards": [
+                { "front": "First", "back": "Rojo" },
+                { "front": "Second", "back": "Azul" },
+                { "front": "Third", "back": "Azul" },
+                { "front": "Fourth", "back": "Azul" },
+                { "front": "Fifth", "back": "Azul" },
+                { "front": "Sixth", "back": "Azul" },
+                { "front": "Seventh", "back": "Azul" },
+                { "front": "Eighth", "back": "Azul" },
+                { "front": "Nineth", "back": "Azul" },
+                { "front": "Tenth", "back": "Azul" },
+                { "front": "Eleventh", "back": "Azul" },
+                { "front": "Twelfth", "back": "Azul" },
+                { "front": "Thirteenth", "back": "Azul" },
+                { "front": "Fourteenth", "back": "Azul" },
+                { "front": "Fifteenth", "back": "Azul" },
+                { "front": "Sixteenth", "back": "Azul" },
+                { "front": "Seventeenth", "back": "Azul" },
+                { "front": "Eighteenth", "back": "Azul" },
+                { "front": "Nineteenth", "back": "Azul" },
+                { "front": "Twentieth", "back": "Azul" },
+                { "front": "Twenty-First", "back": "Azul" },
+                { "front": "Twenty-Second", "back": "Azul" },
+                { "front": "Twenty-Third", "back": "Azul" },
+                { "front": "Twenty-Fourth", "back": "Azul" },
+                { "front": "Twenty-Fifth", "back": "Azul" },
+                { "front": "Twenty-Sixth", "back": "Azul" },
+                { "front": "Twenty-Seventh", "back": "Azul" },
+                { "front": "Twenty-Eighth", "back": "Azul" },
+                { "front": "Twenty-Nineth", "back": "Azul" },
+                { "front": "Thirtieth", "back": "Azul" },
+                { "front": "Thirty-First", "back": "Azul" }
+            ]
+        },
+        {
+            "deckName": "Numbers for Hours",
+            "cards": [
+                { "front": "O'clock", "back": "En punto" },
+                { "front": "How do you say 'Son las 7:30' in English?", "back": "It's seven thirty " },
+                { "front": "Half past…", "back": "Treinta después de la/las…" },
+                { "front": "How do you say 'Son las 2 en punto' in English?", "back": "It's two o'clock" },
+                { "front": "To…", "back": "Para la/las…" },
+                { "front": "How do you say 'Faltan veinte para las once' in English?", "back": "It's twenty to eleven" }
+            ]   
+        },
+        {
+            "deckName": "Countries and Nationalities",
+            "cards": [
+                { "front": "I am from Mexico", "back": "I am Mexican" },
+                { "front": "I am from the United States", "back": "I am American" },
+                { "front": "I am from Canada", "back": "I am Canadian" },
+                { "front": "I am from Brazil", "back": "I am Brazilian" },
+                { "front": "I am from France", "back": "I am French" },
+                { "front": "I am from Germany.", "back": "I am German" },
+                { "front": "I am from Japan", "back": "I am Japanese" },
+                { "front": "I am from Italy", "back": "I am Italian" },
+                { "front": "I am from Spain", "back": "I am Spanish" },
+                { "front": "I am from China", "back": "I am Chinese" },
+                { "front": "I am from the United Kingdom", "back": "I am British" },
+                { "front": "I am from India.", "back": "I am Indian." }
+            ]   
         }
     ]
 }
