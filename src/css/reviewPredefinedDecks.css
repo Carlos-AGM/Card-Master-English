@@ -7,7 +7,7 @@
     --dark-red: #A40000
 }
 
-.reviewCardContainer {
+.reviewCardContainerP {
     background-color: var(--blue-color);
     display: flex;
     position: absolute;
@@ -19,7 +19,7 @@
     top: 8vh;
 }
 
-.noDecksAvailableContainer {
+.noDecksAvailableContainerP {
     background-color: var(--blue-color);
     display: flex;
     flex-direction: column;
@@ -32,11 +32,11 @@
     top: 8vh;
 }
 
-.noDecksAvailableContainer {
+.noDecksAvailableContainerP {
     color: var(--card-color);
 }
 
-.cardWrapper {
+.cardWrapperP {
     display: flex;
     position: relative;
     background-color: var(--card-color);
@@ -48,22 +48,16 @@
     align-items: center;
     padding: 1em;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
-    perspective: 1000px;
 }
 
-.cardContent {
+.cardContentP {
     text-align: center;
     font-family: 'Roboto';
     font-size: 300;
-    transform-style: preserve-3d; 
-    transition: transform 0.6s;
-    position: relative;
-    width: 100%;
-    height: 100%;
 }
 
 /* Estilos para botones de navegación de mazos */
-.previousButton, .nextButton {
+.previousButtonP, .nextButtonP {
     display: flex;
     justify-content: center;
     padding: 0.3em;
@@ -80,12 +74,12 @@
 }
 
 /* Deshabilitar botones cuando no sean necesarios */
-.previousButton:disabled, .nextButton:disabled {
+.previousButtonP:disabled, .nextButtonP:disabled {
     background-color: var(--black-color);
     cursor: not-allowed;
 }
 
-.deckButton {
+.deckButtonP {
     margin-top: 10px;
     padding: 0.5em 1em;
     background-color: var(--black-color);
@@ -99,24 +93,25 @@
     margin-bottom: 2em;
 }
 
-.deckButton:hover {
+.deckButtonP:hover {
     background-color: var(--gray-color);
 }
 
-.reviewCardTitle {
+.reviewCardTitleP {
     color: var(--black-color);
     font-size: 1.5rem;
-    margin-top: 2em;
+    margin-bottom: 2em;
+    margin-top: 0.01;
 }
 
-.flashcardText {
-    margin-top: 4.5em;
+.flashcardTextP {
+    margin-top: 3.5em;
     margin-bottom: 3.5em;
     font-size: x-large;
     font-weight: bold;
 }
 
-.flipButton {
+.flipButtonP {
     position: flex;
     bottom: 50px;
     padding: 0.5em 1em;
@@ -126,30 +121,30 @@
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    margin-bottom: 4.5em;
+    margin-bottom: 2em;
 }
 
-.flipButton:hover {
+.flipButtonP:hover {
     background-color: var(--gray-color);
 }
 
-.backButton {
+.backButtonP {
     position: absolute;
-    top: 6px;
-    left: 0px;
+    top: 10px;
+    left: 10px;
     font-size: 24px;
     cursor: pointer;
     color: var(--black-color);
 }
 
-.backButton:hover {
+.backButtonP:hover {
     color: var(--blue-color);
 }
 
-.deleteDeck, .deleteFlashcard {
+.deleteDeckP, .deleteFlashcardP {
     position: absolute;
-    top: 0px;
-    right: 0px;
+    top: 10px;
+    right: 10px;
     background: none;
     border: none;
     font-size: 1.5rem;
@@ -157,11 +152,11 @@
     color: var(--red-color);
 }
 
-.deleteDeck:hover, .deleteFlashcard:hover {
+.deleteDeckP:hover, .deleteFlashcardP:hover {
     color: var(--dark-red);
 }
 
-.popoverReviewCard {
+.popoverReviewCardP {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -180,7 +175,7 @@
     }
 }
 
-.popoverButton {
+.popoverButtonP {
     display: block;
     width: 100%;
     padding: 0.5em;

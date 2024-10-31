@@ -9,7 +9,7 @@ export function HomePage() {
 
     // Funciones para manejar la navegación a los mazos A1 y A2
     const handleNavigateToPredefinedDecks = (level) => {
-        navigate(`/reviewPredefinedDecks`, { state: { level } }); // Enviar el nivel seleccionado (A1 o A2)
+        navigate('/reviewPredefinedDecks', { state: { level } }); // Enviar el nivel seleccionado (A1 o A2)
     };
 
     return (

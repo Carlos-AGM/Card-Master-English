@@ -1,7 +1,9 @@
 :root {
     --black-color: #282c34;
     --gray-color: #56585e;
+    --card-color: #dddddd;
     --blue-color: #79acc2
+
 }
 
 .navBar {
@@ -40,11 +42,11 @@
     transition: background .3s ease;
     &:hover{
         background-color: var(--gray-color);
-        color: var(--black-color);
+        color: var(--card-color);
     }
 }
 
-.navSignIn{
+.navSignIn {
     text-decoration: none;
     color: var(--black-color);
     background-color: white;
@@ -55,6 +57,6 @@
     &:hover{
         animation: none;
         background-color: var(--gray-color);
-        color: var(--black-color);
+        color: var(--card-color)
     }
 }

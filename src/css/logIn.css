@@ -1,0 +1,50 @@
+:root {
+    --black-color: #282c34;
+    --gray-color: #56585e;
+    --blue-color: #79acc2;
+    --card-color: #dddddd;
+}
+
+.mainTextL {
+    color: var(--black-color);
+    margin-top: 0;
+    font-family: 'Roboto';
+}
+
+.mainContainerL {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    background-color: var(--blue-color);
+    position: absolute;
+    width: 100%;
+    height: calc(100vh - 8vh); 
+    top: 8vh;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Roboto';
+}
+
+.ButtonContainerL { 
+    margin-top: 1em;
+    display: flex;
+    margin-bottom: 1em;
+    justify-content: center;
+}
+
+.verifyAccount{
+    margin-top: 10px;
+    padding: 0.5em 1em;
+    background-color: white;
+    color: var(--black-color);
+    border: 1px solid var(--black-color) ;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    font-family: 'Roboto';
+    &:hover {
+        background-color: var(--black-color);
+        color: #dddddd;
+    }
+}
