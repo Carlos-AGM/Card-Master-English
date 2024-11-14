@@ -69,3 +69,24 @@
         color: #dddddd;
     }
 }
+
+.passwordInputContainer {
+    position: relative;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+}
+
+.passwordInputContainer input {
+    display: flex;
+    position: relative;
+    width: 100%;
+    padding-right: 2em;
+}
+
+.togglePasswordIcon {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+    color: var(--gray-color);
+}

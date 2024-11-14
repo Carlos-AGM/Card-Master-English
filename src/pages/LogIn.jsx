@@ -1,86 +1,122 @@
-import { useState } from 'react';
-import { signInWithEmailAndPassword } from 'firebase/auth';
-import { collection, getDocs, query, where } from 'firebase/firestore';
+import { NavBar } from '../components/NavBar';
+import { ErrorModal } from '../components/ErrorModal';
+import { useState, useEffect } from 'react';
+import { signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
+import { doc, getDoc } from 'firebase/firestore';
 import { auth, db } from '../firebase/firebaseConfig';
 import { useNavigate } from 'react-router-dom';
-import { NavBar } from '../components/NavBar';
+import { Link } from 'react-router-dom';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
-import '../css/logIn.css'
+import '../css/logIn.css';
 
-export function LogIn () {
-    const [studentID, setStudentID] = useState('');
+export function LogIn() {
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
 
     const navigate = useNavigate();
 
-    const handleLogIn = async (e) => {
+    // Verificar si el usuario ya está autenticado al cargar el componente
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+            if (user) {
+                console.log('Usuario ya autenticado en useEffect:', user.uid);
+                navigate('/workArea'); // Redirigir al área de trabajo si el usuario ya está autenticado
+            } else {
+                console.log('No hay usuario autenticado en useEffect.');
+            }
+        });
+        return () => unsubscribe();
+    }, [navigate]);
 
+    const handleLogIn = async (e) => {
         e.preventDefault();
-    
-        if (!studentID || !password) {
-            alert('Por favor, llena todos los campos');
+
+        if (!email || !password) {
+            setErrorMessage('Por favor, llena todos los campos');
+            console.log('Error: campos vacíos');
             return;
         }
-    
+
         try {
-        // Buscar el correo electrónico asociado al studentID en Firestore
-            const usersRef = collection(db, 'users');
-            const q = query(usersRef, where('studentCode', '==', studentID));
-            const querySnapshot = await getDocs(q);
-    
-            if (querySnapshot.empty) {
-                alert('El Student ID no está registrado');
-                return;
-            }
-        
-            // Obtener el correo electrónico del primer documento que coincida con el Student ID
-            const userDoc = querySnapshot.docs[0];
-            const userEmail = userDoc.data().email;
-        
-            // Iniciar sesión con el correo electrónico obtenido y la contraseña
-            const userCredential = await signInWithEmailAndPassword(auth, userEmail, password);
-            console.log('Usuario autenticado:', userCredential.user);
-            navigate('/workArea');
-        
-            // Aquí puedes redirigir al usuario a otra página o mostrar un mensaje de éxito
-            } catch (error) {
-            if (error.code === 'auth/wrong-password') {
-                alert('La contraseña es incorrecta');
-            } else if (error.code === 'auth/user-not-found') {
-                alert('No se encontró el usuario');
+            console.log('Intentando iniciar sesión con:', email);
+
+            // Iniciar sesión con el correo electrónico y la contraseña proporcionados
+            const userCredential = await signInWithEmailAndPassword(auth, email, password);
+            const user = userCredential.user;
+            console.log('Usuario autenticado en signInWithEmailAndPassword:', user.uid);
+
+            // Verificar el documento del usuario en Firestore
+            const userDocRef = doc(db, 'users', user.uid);
+            const userDocSnap = await getDoc(userDocRef);
+
+            if (userDocSnap.exists()) {
+                console.log('Documento de usuario encontrado en Firestore:', userDocSnap.data());
+                navigate('/workArea'); // Redirigir después de autenticación exitosa
             } else {
-                console.error('Error al iniciar sesión:', error);
+                console.log('No existe un documento para este usuario en Firestore.');
+                setErrorMessage('No se encontró el usuario en Firestore.');
+            }
+
+        } catch (error) {
+            console.log('Código de error:', error.code);
+
+            if (error.code === 'auth/invalid-credential') {
+                setErrorMessage('Invalid email or password.');
+            } else {
+                setErrorMessage('Error al iniciar sesión:', error);
             }
         }
+    };
+    // Maneja la visibilidad de la contraseña
+    const togglePasswordVisibility = () => {
+        setShowPassword((prevShowPassword) => !prevShowPassword);
+    };
+
+    // Función para cerrar el ErrorModal
+    const closeErrorModal = () => {
+        setErrorMessage('');
     };
 
     return (
         <>
-        <NavBar/>
-        <div className='mainContainerL'>
-            <h2 className='mainTextL'>Verify your account</h2>
-            <div className='formContainer'>
-                <form className='form' onSubmit={handleLogIn}>
-                    <p>Student ID</p>
-                    <input
-                    type="text"
-                    value={studentID}
-                    onChange={(e) => setStudentID(e.target.value)}
-                    placeholder="Type your student ID..."
-                    />
-                    <p>Password</p>
-                    <input
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    placeholder="Type your password..."
-                    />
-                    <div className='ButtonContainerL'>
-                        <button className='verifyAccount' type="submit">Verify Account</button>
-                    </div>
-                </form>
+            <NavBar />
+            <div className='mainContainerL'>
+                <h2 className='mainTextL'>Verify your account</h2>
+                <div className='formContainer'>
+                    <form className='form' onSubmit={handleLogIn}>
+                        <p>Email</p>
+                        <input
+                            type="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            placeholder="Type your email..."
+                        />
+                        <p>Password</p>
+                        <div className="passwordInputContainer">
+                        <input
+                            type={showPassword ? "text" : "password"}
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            placeholder="Create a password..."
+                        />
+                        <span onClick={togglePasswordVisibility} className="togglePasswordIcon">
+                            {showPassword ? <FaEyeSlash /> : <FaEye />}
+                        </span>
+                        </div>
+                        <div className='ButtonContainerL'>
+                            <button className='verifyAccount' type="submit">Verify Account</button>
+                        </div>
+                    </form>
+                </div>
+                <Link to='/SignIn' className='unsubscribedPeople'>
+                    Aren&apos;t you subscribed? Subscribe to Card Master English Here!
+                </Link>
             </div>
-        </div>
+            {/* Renderiza el ErrorModal solo si errorMessage tiene un valor */}
+            {errorMessage && <ErrorModal message={errorMessage} onClose={closeErrorModal} />}
         </>
     );
 }

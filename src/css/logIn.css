@@ -48,3 +48,9 @@
         color: #dddddd;
     }
 }
+
+.unsubscribedPeople {
+    text-decoration: none;
+    color: var(--black-color);
+    margin-top: 1em;
+}

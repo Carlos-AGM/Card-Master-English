@@ -60,3 +60,26 @@
         color: var(--card-color)
     }
 }
+
+.disabledLink {
+    opacity: 0.5;
+    pointer-events: none; /* Evita el clic en navegadores sin JavaScript */
+    cursor: not-allowed;
+    text-decoration: none; /* remueve el subrayado */
+}
+
+.navLogOut {
+    font-size: 1.2rem;
+    font-family: Arial;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 8px;
+    padding: 0.5em;
+    transition: background .3s ease;
+    &:hover{
+        animation: none;
+        background-color: var(--gray-color);
+        color: var(--card-color);
+        cursor: pointer;
+    }
+} 
