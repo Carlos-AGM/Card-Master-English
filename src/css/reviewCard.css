@@ -19,6 +19,15 @@
     top: 8vh;
 }
 
+.fullContent {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2em;
+}
+
 .noDecksAvailableContainer {
     background-color: var(--blue-color);
     display: flex;
@@ -46,9 +55,18 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 1em;
+    padding: 2em;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
     perspective: 1000px;
+    margin: auto;
+}
+
+.previousButton {
+    left: -60px; /* Coloca la flecha a la izquierda de la tarjeta */
+}
+
+.nextButton {
+    right: -60px; /* Coloca la flecha a la derecha de la tarjeta */
 }
 
 .cardContent {
@@ -62,8 +80,34 @@
     height: 100%;
 }
 
+.navigationButton {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem; 
+    cursor: pointer;
+    color: var(--black-color);
+    z-index: 10; 
+}
+
 /* Estilos para botones de navegación de mazos */
 .previousButton, .nextButton {
+    display: flex;
+    justify-content: center;
+    padding: 0.3em;
+    margin: 12px;
+    background-color: var(--black-color);
+    color: var(--card-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    &:hover {
+        color: var(--blue-color);
+    }
+}
+
+.nextButton {
     display: flex;
     justify-content: center;
     padding: 0.3em;
@@ -97,6 +141,7 @@
     text-decoration: none;
     font-family: 'Roboto';
     margin-bottom: 2em;
+    font-size: 1em;
 }
 
 .deckButton:hover {
@@ -105,14 +150,14 @@
 
 .reviewCardTitle {
     color: var(--black-color);
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     margin-top: 2em;
 }
 
 .flashcardText {
-    margin-top: 4.5em;
+    margin-top: 3.5em;
     margin-bottom: 3.5em;
-    font-size: x-large;
+    font-size: 1.8em;
     font-weight: bold;
 }
 
@@ -126,7 +171,8 @@
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    margin-bottom: 4.5em;
+    margin-bottom: 2em;
+    font-size: 1em;
 }
 
 .flipButton:hover {
@@ -135,8 +181,8 @@
 
 .backButton {
     position: absolute;
-    top: 6px;
-    left: 0px;
+    top: -20px;
+    left: -20px;
     font-size: 24px;
     cursor: pointer;
     color: var(--black-color);
@@ -148,8 +194,8 @@
 
 .deleteDeck, .deleteFlashcard {
     position: absolute;
-    top: 0px;
-    right: 0px;
+    top: -25px;
+    right: -20px;
     background: none;
     border: none;
     font-size: 1.5rem;
@@ -193,4 +239,22 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
     font-family: 'Roboto';
+}
+
+.quizButton {
+    padding: 0.5em 1em;
+    margin: 0.5em 0;
+    margin-top: 2em;
+    background-color: var(--card-color);
+    color: var(--black-color);
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: .9em;
+    &:hover {
+        background-color: var(--gray-color);
+        color: var(--card-color);
+    }
 }

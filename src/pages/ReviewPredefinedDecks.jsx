@@ -117,7 +117,7 @@ export function ReviewPredefinedDecks() {
                                     onClick={handleGoBack}
                                 />
                                 <h2 className='reviewCardTitleP'>Deck {currentDeckIndex + 1} of {deckKeys.length}</h2>
-                                <p className='flashcardText' >{deckKeys[currentDeckIndex]}</p>
+                                <p className='flashcardTextP' >{deckKeys[currentDeckIndex]}</p>
                                 <button className="deckButtonP" onClick={handleDeckClick}>
                                     View flashcards
                                 </button>
@@ -130,7 +130,7 @@ export function ReviewPredefinedDecks() {
                                     onClick={() => setCurrentCardIndex(null)} // Regresa a la lista de mazos
                                 />
                                 <h2 className='reviewCardTitleP'>Flashcard {currentCardIndex + 1} of {currentDeck.cards.length}</h2>
-                                <p className='flashcardText' >{isFront ? currentCard?.front : currentCard?.back}</p>
+                                <p className='flashcardTextP' >{isFront ? currentCard?.front : currentCard?.back}</p>
                             </>
                         )}
                     </div>

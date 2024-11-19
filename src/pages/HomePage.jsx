@@ -33,7 +33,7 @@ export function HomePage() {
                     <div className='imageTextAnswer'>
                         <p>- Clearly, Card Master English!</p>
                     </div>
-                    <Link to='/workArea' className='imageTextButton'>Start Now!</Link>
+                    <Link to='/SignIn' className='imageTextButton'>Start Now!</Link>
                 </section>
             </main>
         </div>

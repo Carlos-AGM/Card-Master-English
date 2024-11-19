@@ -6,6 +6,7 @@ import { LogIn } from '../pages/LogIn.jsx';
 import { SignIn } from '../pages/SignIn.jsx';
 import { ReviewCards } from '../pages/ReviewCards.jsx';
 import { ReviewPredefinedDecks } from '../pages/ReviewPredefinedDecks.jsx';
+import { QuizMode } from '../pages/QuizMode.jsx';
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
   {
     path: '/reviewPredefinedDecks/',
     element: <ReviewPredefinedDecks/>
+  },
+  {
+    path: '/quizMode/',
+    element: <QuizMode/>
   }
 ]);
 

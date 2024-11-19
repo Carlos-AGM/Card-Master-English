@@ -6,8 +6,6 @@ import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth, db} from '../firebase/firebaseConfig'; // Importa el servicio de Firebase
 import { doc, setDoc } from 'firebase/firestore';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
-
-
 import '../css/signIn.css'
 
 export function SignIn () {
@@ -78,8 +76,8 @@ export function SignIn () {
     setShowPassword((prevShowPassword) => !prevShowPassword);
   };
 
-   // Función para cerrar el ErrorModal
-   const closeErrorModal = () => {
+  // Función para cerrar el ErrorModal
+  const closeErrorModal = () => {
     setErrorMessage('');
   };
 
@@ -152,7 +150,7 @@ export function SignIn () {
         </div>
       </div>
       {/* Renderiza el ErrorModal solo si errorMessage tiene un valor */}
-      {errorMessage && <ErrorModal message={errorMessage} onClose={closeErrorModal} />}
+      {errorMessage && <ErrorModal title={'Error'} message={errorMessage} onClose={closeErrorModal} />}
     </>
   );
 }
