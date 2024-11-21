@@ -34,6 +34,7 @@
 
 .modalContent p {
     margin-bottom: 1em;
+    font-size: 1.2em;
 }
 
 .modalContent button {
@@ -43,6 +44,7 @@
     color: white;
     cursor: pointer;
     border-radius: 5px;
+    font-size: 0.9em;
     &:hover{
         background: var(--dark-blue-color);
     }

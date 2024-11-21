@@ -6,9 +6,18 @@
 }
 
 .mainText {
-    color: var(--black-color);
+    display: flex;
+    height: 6%;
+    width: 20%;
+    justify-content: center;
+    align-items: center;
+    color: var(--card-color);
     margin-top: 0;
+    margin-bottom: 0;
     font-family: 'Roboto';
+    background-color: var(--black-color);
+    border-radius: .4em;
+    transform: translate(0%, 50%);
 }
 
 .mainContainerC {
@@ -23,6 +32,10 @@
     justify-content: center;
     align-items: center;
     font-family: 'Roboto';
+    background-image: url('https://i.postimg.cc/0j3L42B3/tim-mossholder-SZg-VZPb-Q7-RE-unsplash.jpg');
+    background-size: cover; /* Asegura que la imagen cubra todo el contenedor */
+    background-position: top right; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
 }
 
 .form {
@@ -39,11 +52,15 @@
 }
 
 .formContainer {
-    background-color: var(--card-color);
-    align-items: center;
-    justify-content: center;
     padding: 1em;
     border-radius: 1em;
+    background-color: white;
+    color: var(--black-color);
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 1.2em;
 }
 
 .createButtonContainer { 
@@ -56,8 +73,8 @@
 .createAccount {
     margin-top: 10px;
     padding: 0.5em 1em;
-    background-color: white;
-    color: var(--black-color);
+    background-color: var(--gray-color);
+    color: white;
     border: 1px solid var(--black-color) ;
     border-radius: 5px;
     cursor: pointer;

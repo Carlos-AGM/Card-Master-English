@@ -10,13 +10,13 @@
 .reviewCardContainerP {
     background-color: var(--blue-color);
     display: flex;
-    position: absolute;
     flex: 1;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     height: calc(100vh - 8vh);
     width: 100%;
     top: 8vh;
+    position: absolute;
 }
 
 .noDecksAvailableContainerP {
@@ -91,10 +91,10 @@
     text-decoration: none;
     font-family: 'Roboto';
     margin-bottom: 2em;
-}
-
-.deckButtonP:hover {
-    background-color: var(--gray-color);
+    font-size: 1em;
+    &:hover {
+        background-color: var(--gray-color);
+    }
 }
 
 .reviewCardTitleP {
@@ -106,7 +106,7 @@
 
 .flashcardTextP {
     margin-top: 3.5em;
-    margin-bottom: 3.5em;
+    margin-bottom: 1.4em;
     font-size: 1.8em;
     font-weight: bold;
 }
@@ -121,6 +121,7 @@
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    margin-top: 1em;
     margin-bottom: 2em;
     font-size: 1em;
 }
@@ -189,4 +190,30 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
     font-family: 'Roboto';
+}
+
+.quizButtonPredef {
+    margin-top: 2em;
+    padding: 0.5em 1em;
+    background-color: var(--card-color);
+    color: var(--black-color);
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 1em;
+    align-self: center; 
+    &:hover {
+        background-color: var(--gray-color);
+        color: var(--card-color);
+    }
+}
+
+.cardAndButtonContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2em;
 }

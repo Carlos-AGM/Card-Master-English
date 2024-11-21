@@ -85,7 +85,9 @@ export function SignIn () {
     <>
       <NavBar/>
       <div className='mainContainerC'>
-        <h2 className='mainText'>Create account</h2>
+        <div className='mainText'>
+          <h2>Create account</h2>
+        </div>
         <div className='formContainer'>
           <form className='form' onSubmit={handleSignUp}>
             <p>Name</p>

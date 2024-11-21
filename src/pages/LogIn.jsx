@@ -84,11 +84,14 @@ export function LogIn() {
         <>
             <NavBar />
             <div className='mainContainerL'>
-                <h2 className='mainTextL'>Verify your account</h2>
-                <div className='formContainer'>
+                <div className='headerContainerL' >
+                    <h2>Verify your account</h2>
+                </div>
+                <div className='formContainerLogIn'>
                     <form className='form' onSubmit={handleLogIn}>
                         <p>Email</p>
                         <input
+                            className='inputEmail'
                             type="email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
@@ -97,6 +100,7 @@ export function LogIn() {
                         <p>Password</p>
                         <div className="passwordInputContainer">
                         <input
+                            className='inputPassword'
                             type={showPassword ? "text" : "password"}
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}

@@ -26,7 +26,7 @@ export function ReviewCards() {
             <>
                 <NavBar />
                 <div className="noDecksAvailableContainer">
-                    <h2>No decks available</h2>
+                    <h2 className='noDecksAvailableT'>No decks available</h2>
                     <Link to='/workArea' className='noDecksAvailable deckButton'>Return to work area</Link>
                 </div>
             </>

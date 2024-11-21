@@ -1,6 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { NavBar } from '../components/NavBar';
-import homePageImage from '../assets/images/homepage.webp';
 import '../css/homePage.css';
 import '../css/navBar.css';
 
@@ -26,7 +25,7 @@ export function HomePage() {
             <NavBar />
             <main className='mainContent'>
                 <section className='imageContainer'>
-                    <img className='homePageImage' src={homePageImage} alt='A man thinking about what is the best teaching resource to study English.' loading='lazy' />
+                    <img className='homePageImage' src={'https://i.postimg.cc/vBQT8MvD/homepage.webp'} alt='A man thinking about what is the best teaching resource to study English.' loading='lazy' />
                     <div className='imageTextQuestion'>
                         <p> Which is one of the best tools to learn vocabulary in English?</p>
                     </div>

@@ -7,6 +7,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import predefinedDecksA1 from '../assets/data/deckA1.json';  // Archivo JSON para A1
 import predefinedDecksA2 from '../assets/data/deckA2.json';  // Archivo JSON para A2
 import '../css/reviewPredefinedDecks.css';
+import '../css/quizMode.css'
 
 export function ReviewPredefinedDecks() {
     const navigate = useNavigate();
@@ -97,7 +98,7 @@ export function ReviewPredefinedDecks() {
                         disabled={currentDeckIndex === 0}
                     />
                 )}
-
+    
                 {/* Botones de navegación de flashcards */}
                 {currentCardIndex !== null && (
                     <ChevronLeftIcon
@@ -106,43 +107,58 @@ export function ReviewPredefinedDecks() {
                         disabled={currentCardIndex === 0}
                     />
                 )}
-
-                <div className="cardWrapperP">
-                    <div className="cardContentP">
-                        {currentCardIndex === null ? (
-                            // Muestra el nombre del mazo si estamos en modo de navegación de mazos
-                            <>  
-                                <ArrowBackIcon
-                                    className='backButtonP'
-                                    onClick={handleGoBack}
-                                />
-                                <h2 className='reviewCardTitleP'>Deck {currentDeckIndex + 1} of {deckKeys.length}</h2>
-                                <p className='flashcardTextP' >{deckKeys[currentDeckIndex]}</p>
-                                <button className="deckButtonP" onClick={handleDeckClick}>
-                                    View flashcards
-                                </button>
-                            </>
-                        ) : (
-                            // Muestra las flashcards del mazo actual
-                            <>
-                                <ArrowBackIcon
-                                    className="backButtonP"
-                                    onClick={() => setCurrentCardIndex(null)} // Regresa a la lista de mazos
-                                />
-                                <h2 className='reviewCardTitleP'>Flashcard {currentCardIndex + 1} of {currentDeck.cards.length}</h2>
-                                <p className='flashcardTextP' >{isFront ? currentCard?.front : currentCard?.back}</p>
-                            </>
+    
+                <div className="cardAndButtonContainer">
+                    <div className="cardWrapperP">
+                        <div className="cardContentP">
+                            {currentCardIndex === null ? (
+                                <>  
+                                    <ArrowBackIcon
+                                        className='backButtonP'
+                                        onClick={handleGoBack}
+                                    />
+                                    <h2 className='reviewCardTitleP'>Deck {currentDeckIndex + 1} of {deckKeys.length}</h2>
+                                    <p className='flashcardTextP'>{deckKeys[currentDeckIndex]}</p>
+                                    <button className="deckButtonP" onClick={handleDeckClick}>
+                                        View flashcards
+                                    </button>
+                                </>
+                            ) : (
+                                <>  
+                                    <ArrowBackIcon
+                                        className="backButtonP"
+                                        onClick={() => setCurrentCardIndex(null)} // Regresa a la lista de mazos
+                                    />
+                                    <h2 className='reviewCardTitleP'>Flashcard {currentCardIndex + 1} of {currentDeck.cards.length}</h2>
+                                    <p className='flashcardTextP'>{isFront ? currentCard?.front : currentCard?.back}</p>
+                                </>
+                            )}
+                        </div>
+    
+                        {/* Botón para hacer flip a la card */}
+                        {currentCardIndex !== null && (
+                            <button className="flipButtonP" onClick={handleFlipCard}>
+                                {isFront ? 'Flip to Back' : 'Flip to Front'}
+                            </button>
                         )}
                     </div>
-
-                    {/* Botón para hacer flip a la card */}
-                    {currentCardIndex !== null && (
-                        <button className="flipButtonP" onClick={handleFlipCard}>
-                            {isFront ? 'Flip to Back' : 'Flip to Front'}
-                        </button>
-                    )}
+    
+                    {/* Botón para iniciar el quiz */}
+                    <button
+                        className="quizButtonPredef"
+                        onClick={() =>
+                            navigate("/quizMode", {
+                                state: {
+                                    deck: currentDeck.cards,
+                                    deckName: deckKeys[currentDeckIndex],
+                                },
+                            })
+                        }
+                    >
+                        Start Quiz
+                    </button>
                 </div>
-
+    
                 {/* Botones de navegación de mazos */}
                 {currentCardIndex === null && (
                     <ChevronRightIcon
@@ -151,7 +167,7 @@ export function ReviewPredefinedDecks() {
                         disabled={currentDeckIndex === deckKeys.length - 1}
                     />
                 )}
-
+    
                 {/* Botones de navegación de flashcards */}
                 {currentCardIndex !== null && (
                     <ChevronRightIcon

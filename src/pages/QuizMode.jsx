@@ -17,10 +17,14 @@ export function QuizMode() {
 
     const currentCard = deck[currentCardIndex];
 
+    const normalizeAnswer = (answer) => {
+        // Elimina espacios adicionales, convierte a minúsculas y elimina puntos finales
+        return answer.trim().toLowerCase().replace(/\.$/, '');
+    };
+
     const handleCheckAnswer = () => {
-        // Normalizamos ambas cadenas para evitar discrepancias
-        const normalizedUserAnswer = userAnswer.trim().toLowerCase();
-        const normalizedCardBack = currentCard?.back.trim().toLowerCase();
+        const normalizedUserAnswer = normalizeAnswer(userAnswer);
+        const normalizedCardBack = normalizeAnswer(currentCard?.back || '');
 
         if (normalizedUserAnswer === normalizedCardBack) {
             setIsCorrect(true); // Respuesta correcta

@@ -5,7 +5,7 @@
     --card-color: #dddddd;
 }
 
-.mainTextL {
+.headerContainerL {
     display: flex;
     height: 6%;
     width: 20%;
@@ -13,9 +13,11 @@
     align-items: center;
     color: var(--card-color);
     margin-top: 0;
+    margin-bottom: 0;
     font-family: 'Roboto';
     background-color: var(--black-color);
-    border-radius: 99em;
+    border-radius: .4em;
+    transform: translate(0%, 50%);
 }
 
 .mainContainerL {
@@ -30,6 +32,37 @@
     justify-content: center;
     align-items: center;
     font-family: 'Roboto';
+    background-image: url('https://i.postimg.cc/0j3L42B3/tim-mossholder-SZg-VZPb-Q7-RE-unsplash.jpg');
+    background-size: cover; /* Asegura que la imagen cubra todo el contenedor */
+    background-position: top right; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+}
+
+.formContainerLogIn {
+    padding: 1em;
+    border-radius: 1em;
+    margin-bottom: 0.5em 0;
+    background-color: white;
+    color: var(--black-color);
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 1.2em;
+}
+
+.inputEmail {
+    color: black;
+    ::placeholder {
+        color: white;
+    }
+}
+
+.inputPassword {
+    color: black;
+    ::placeholder {
+        color: white;
+    }
 }
 
 .ButtonContainerL { 
@@ -42,8 +75,8 @@
 .verifyAccount{
     margin-top: 10px;
     padding: 0.5em 1em;
-    background-color: white;
-    color: var(--black-color);
+    background-color: var(--gray-color);
+    color: white;
     border: 1px solid var(--black-color) ;
     border-radius: 5px;
     cursor: pointer;
@@ -58,6 +91,6 @@
 
 .unsubscribedPeople {
     text-decoration: none;
-    color: var(--black-color);
+    color: white;
     margin-top: 1em;
 }

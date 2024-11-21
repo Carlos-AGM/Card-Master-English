@@ -41,8 +41,13 @@
     top: 8vh;
 }
 
+.noDecksAvailableT {
+    font-size: 1.8em;
+}
+
 .noDecksAvailableContainer {
     color: var(--card-color);
+    font-size: 1em;
 }
 
 .cardWrapper {
