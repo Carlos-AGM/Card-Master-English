@@ -1,10 +1,22 @@
 import { Link, useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from '../firebase/firebaseConfig';
 import { NavBar } from '../components/NavBar';
 import '../css/homePage.css';
 import '../css/navBar.css';
 
 export function HomePage() {
     const navigate = useNavigate();
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+    // Verifica el estado de autenticación al cargar la página
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+            setIsAuthenticated(!!user); // Si hay usuario, está autenticado
+        });
+        return () => unsubscribe();
+    }, []);
 
     // Funciones para manejar la navegación a los mazos A1 y A2
     const handleNavigateToPredefinedDecks = (level) => {
@@ -32,7 +44,12 @@ export function HomePage() {
                     <div className='imageTextAnswer'>
                         <p>- Clearly, Card Master English!</p>
                     </div>
-                    <Link to='/SignIn' className='imageTextButton'>Start Now!</Link>
+                    <Link
+                        to={isAuthenticated ? '/workArea' : '/SignIn'}
+                        className='imageTextButton'
+                    >
+                        {isAuthenticated ? 'Go to Work Area' : 'Start Now!'}
+                    </Link>
                 </section>
             </main>
         </div>
