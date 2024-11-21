@@ -91,6 +91,6 @@
 
 .unsubscribedPeople {
     text-decoration: none;
-    color: white;
+    color: var(--blue-color);
     margin-top: 1em;
 }
