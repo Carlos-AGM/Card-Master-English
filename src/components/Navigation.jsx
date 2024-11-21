@@ -10,7 +10,7 @@ import { QuizMode } from '../pages/QuizMode.jsx';
 
 const router = createBrowserRouter([
   {
-  path: '/',
+  path: '/Card-Master-English/',
   element: <HomePage/>,
   errorElement: <NotFoundPage/> 
   },
